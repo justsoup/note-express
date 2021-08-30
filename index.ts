@@ -1,10 +1,9 @@
-import express from 'express'
-import { readFile } from 'fs/promises'
+const express = require('express')
+const readFile = require('fs/promises').readFile
+const CONFIG = require('./config')
+const routeRoutes = require('./routes/routes')
+const routeNote = require('./routes/note')
 
-
-import CONFIG from './config'
-import routeRoutes from './routes/routes'
-import routeNote from './routes/note'
 
 const routesPATH = './json/routes.json'
 const notePATH = './json/note.json'

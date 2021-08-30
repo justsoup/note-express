@@ -1,8 +1,10 @@
-import express from 'express'
-import { writeFile,unlink,readdir } from 'fs/promises'
-import { nanoid } from "nanoid";
-import multer from 'multer'
-const route = express.Router()
+const express = require('express'),
+    route = express.Router();
+const writeFile = require('fs/promises').writeFile
+const unlink = require('fs/promises').unlink
+const readdir = require('fs/promises').readdir
+const nanoid = require('nanoid').nanoid
+const multer = require('multer')
 
 // 设置文件保存规则
 const storage = multer.diskStorage({
@@ -247,5 +249,4 @@ route.post('/delNote',(req:any, res:any) => {
     }
 })
 
-
-export default route
+module.exports = route

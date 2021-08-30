@@ -1,7 +1,8 @@
-import express from 'express'
-import { writeFile } from 'fs/promises'
-import jwt from 'jsonwebtoken'
-const route = express.Router()
+const express = require('express'),
+    route = express.Router();
+const writeFile = require('fs/promises').writeFile
+const jwt = require('jsonwebtoken')
+
 
 
 route.get('/getRoutes', (req:any, res:any) => {
@@ -90,5 +91,4 @@ route.post('/login', (req:any, res:any) => {
     }
 });
 
-
-export default route
+module.exports = route
