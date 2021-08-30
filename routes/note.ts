@@ -101,7 +101,7 @@ route.post('/addNote', (req:any, res:any) => {
     // 存在route,找到route对应的数组
     // 数组push新的项
     // 写入文件
-    const {route,title,content,important} = req.body
+    const {route,index,title,content,important} = req.body
     console.log(req.body)
     if(route){
         const routeArr:Array<object> = req.noteDATA[0][route]
@@ -112,12 +112,21 @@ route.post('/addNote', (req:any, res:any) => {
             });
             return
         }
-        routeArr.push({
-            id:nanoid(),
-            title:title,
-            content:content,
-            important:important
-        })
+        if(index>=0 && index < routeArr.length){
+            routeArr.splice(index,0,{
+                id:nanoid(),
+                title:title,
+                content:content,
+                important:important
+            })
+        }else{
+            routeArr.push({
+                id:nanoid(),
+                title:title,
+                content:content,
+                important:important
+            })
+        }
         writeFile(req.notePATH, JSON.stringify(req.noteDATA)).then(()=>{
             res.send({
                 success: true,
