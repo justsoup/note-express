@@ -1,6 +1,6 @@
 const CONFIG = {
     //=>WEB服务端口号
-    HOST: 'localhost',
+    HOST: '194.87.70.176',
     PORT: 9988,
 
     //=>CROS跨域相关信息
